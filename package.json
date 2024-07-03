@@ -1,0 +1,26 @@
+{
+  "name": "dudar_admin_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuradhagupta28/dudar_admin_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anuradhagupta28/dudar_admin_backend/issues"
+  },
+  "homepage": "https://github.com/Anuradhagupta28/dudar_admin_backend#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2",
+    "nodemon": "^3.1.4"
+  }
+}
