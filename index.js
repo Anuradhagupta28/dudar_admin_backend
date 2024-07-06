@@ -1,20 +1,20 @@
+
+
 const express = require('express');
+const sequelize = require('./config/database');
 const adminRoutes = require('./routes/adminRoutes');
+const contentRoutes = require('./routes/contentRoutes');
+require('./models/dashboard')(sequelize);
 
-// Import required modules
-
-// Create an instance of Express
 const app = express();
-
-// Define routes and middleware
-// ...
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use('/admin', adminRoutes);
+app.use('/content', contentRoutes);
 
-app.use('/api', adminRoutes);
-
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+sequelize.sync().then(() => {
+  app.listen(port, () => {
+    console.log(`Admin panel API running on port ${port}`);
+  });
 });

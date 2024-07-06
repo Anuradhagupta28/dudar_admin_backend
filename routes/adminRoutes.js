@@ -1,8 +1,11 @@
 const express = require('express');
-const AdminController = require('../controllers/adminController');
+const adminController = require('../controllers/adminController');
 
 const router = express.Router();
 
-router.get('/admin-panel-data', AdminController.getAdminPanelData);
+router.get('/general-stats', adminController.getGeneralStats);
+router.get('/call-stats', adminController.getCallStats);
 
 module.exports = router;
+
+
