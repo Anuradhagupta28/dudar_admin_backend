@@ -4,11 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   
 const Exam = sequelize.define('Exam', {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true
-    // },
+   
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -41,11 +37,17 @@ const Exam = sequelize.define('Exam', {
   });
 
 const Subject = sequelize.define('Subject', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    allowNull: false,
+  },
    
     examName: {
       type: DataTypes.STRING,
@@ -66,11 +68,18 @@ const Subject = sequelize.define('Subject', {
   });
 
 const Chapter = sequelize.define('Chapter', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    allowNull: false,
+  },
+    
     examName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -98,7 +107,13 @@ const Chapter = sequelize.define('Chapter', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      allowNull: false,
+    },
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      allowNull: false,
     },
     examName: {
       type: DataTypes.STRING,

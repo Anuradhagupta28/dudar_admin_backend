@@ -1,29 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
-
-  const UserRole = sequelize.define('UserRole', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4,
-      allowNull: false,
-    },
-    roleName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    permission: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  });
-
-      const SystemUser = sequelize.define('SystemUser', {
+    const Author = sequelize.define('Author', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -34,10 +11,6 @@ module.exports = (sequelize) => {
           type: DataTypes.UUID,
           defaultValue: Sequelize.UUIDV4,
           allowNull: false,
-        },
-        role: {
-          type: DataTypes.STRING,
-          allowNull: false
         },
         name: {
           type: DataTypes.STRING,
@@ -46,22 +19,30 @@ module.exports = (sequelize) => {
         email: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true
+          unique: true,
+          validate: {
+            isEmail: true
+          }
         },
-        phone: {
+        photo: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: true
         },
-        profilePic: {
+        about: {
+          type: DataTypes.TEXT,
+          allowNull: true
+        },
+        linkedin: {
           type: DataTypes.STRING,
           allowNull: true
         },
         status: {
-          type: DataTypes.ENUM('active', 'inactive'),
-          defaultValue: 'active'
+          type: DataTypes.STRING,
+          defaultValue: true
         }
       });
-      const MenuPermission = sequelize.define('MenuPermission', {
+    
+      const Blog = sequelize.define('Blog', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -73,23 +54,21 @@ module.exports = (sequelize) => {
           defaultValue: Sequelize.UUIDV4,
           allowNull: false,
         },
-        role: {
+        authorName: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          
+        },
+        title: {
           type: DataTypes.STRING,
           allowNull: false
         },
-        menu: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        submenu: {
+        tags: {
           type: DataTypes.STRING,
           allowNull: true
-        },
-        url: {
-          type: DataTypes.STRING,
-          allowNull: false
         }
       });
-
-    return {SystemUser,UserRole, MenuPermission};
+    return { Author, Blog};
 }
+
+  
